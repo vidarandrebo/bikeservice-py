@@ -1,2 +1,2 @@
 source venv/bin/activate
-waitress-serve --call 'bikeservice-py:create_app'
+waitress-serve --call 'bikeservice_py:create_app'

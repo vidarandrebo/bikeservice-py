@@ -2,5 +2,5 @@ python -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
-export FLASK_APP=bikeservice-py
+export FLASK_APP=bikeservice_py
 flask init-db
