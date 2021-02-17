@@ -106,24 +106,14 @@ def bikes():
 @bp.route('/parts', methods=('GET', 'POST'))
 @login_required
 def parts():
-    if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
-        error = None
-        if not title:
-            error = 'Title is required'
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                    'INSERT INTO post (title, body, author_id)'
-                    ' VALUES (?, ?, ?)',
-                    (title, body, g.user['id'])
-            )
-            db.commit()
-            return redirect(url_for('blog.index'))
-    return render_template('blog/parts.html')
+    db = get_db()
+    posts = db.execute(
+            'SELECT p.id, manufacturer, model, acquired, bike_id, owner_id, username, km, part_type'
+            ' FROM part p JOIN user u ON p.owner_id = u.id'
+            ' WHERE p.owner_id = ?'
+            ' ORDER BY acquired DESC',str(g.user['id'])
+    ).fetchall()
+    return render_template('blog/parts.html', posts=posts)
 
 @bp.route('/create_bike', methods=('GET', 'POST'))
 @login_required
@@ -148,3 +138,69 @@ def create_bike():
             db.commit()
             return redirect(url_for('blog.bikes'))
     return render_template('blog/create_bike.html')
+
+@bp.route('/create_part', methods=('GET', 'POST'))
+@login_required
+def create_part():
+    if request.method == 'POST':
+        manufacturer = request.form['manufacturer']
+        model = request.form['model']
+        part_type = request.form['part_type']
+        acquired = request.form['acquired']
+        km = request.form['km']
+        error = None
+        if not manufacturer:
+            error = 'Manufacturer is required'
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            db.execute(
+                    'INSERT INTO part (manufacturer, model, owner_id, acquired, km, part_type)'
+                    ' VALUES (?, ?, ?, ?, ?, ?)',
+                    (manufacturer, model, g.user['id'], acquired, km, part_type)
+            )
+            db.commit()
+            return redirect(url_for('blog.parts'))
+    return render_template('blog/create_part.html')
+
+@bp.route('/<int:id>/update_km', methods=('GET', 'POST'))
+@login_required
+def update_km(id):
+    bike = get_bike(id)
+
+    if request.method == 'POST':
+        km = request.form['km']
+        error = None
+
+        if not km:
+            error = 'Km is required'
+
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            db.execute(
+                    'UPDATE bike SET km = ?'
+                    ' WHERE id = ?',
+                    (km, id)
+            )
+            db.commit()
+            return redirect(url_for('blog.bikes'))
+    return render_template('blog/update_km.html', post=bike)
+
+def get_bike(id, check_owner=True):
+    bike = get_db().execute(
+        'SELECT km, b.owner_id, u.id'
+        ' FROM bike b JOIN user u ON b.owner_id = u.id'
+        ' WHERE b.id = ?',
+        (id,)
+    ).fetchone()
+
+    if bike is None:
+        abort(404, "Post id {0} doesn't exist.".format(id))
+
+    if check_owner and bike['owner_id'] != g.user['id']:
+        abort(403)
+
+    return bike

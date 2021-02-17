@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Create Part{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="manufacturer">Manufacturer</label>
+        <input name="manufacturer" id="manufacturer" value="{{ request.form['manufacturer'] }}" required>
+        <label for="model">Model</label>
+        <input name="model" id="model">{{ request.form['model'] }}</input>
+        <label for="part_type">Part Type</label>
+        <input name="part_type" id="part_type">{{ request.form['part_type'] }}</input>
+        <label for="date">Date Acquired</label>
+        <input type="date" name="acquired" id="acquired">{{ request.form['acquired'] }}</input>
+        <label for="km">Km</label>
+        <input type="number" name="km" id="km">{{ request.form['km'] }}</input>
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

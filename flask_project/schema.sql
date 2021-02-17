@@ -35,8 +35,21 @@ CREATE TABLE part(
     acquired DATE NOT NULL,
     manufacturer TEXT NOT NULL,
     model TEXT NOT NULL,
+    part_type TEXT NOT NULL,
     dimensions TEXT,
     km REAL,
     FOREIGN KEY (owner_id) REFERENCES user (id)
     FOREIGN KEY (bike_id) REFERENCES bike (id)
 );
+
+
+
+CREATE TABLE bike_part(
+    bike_id INTEGER NOT NULL,
+    part_id INTEGER NOT NULL,
+    km REAL,
+    since DATE,
+    FOREIGN KEY (bike_id) REFERENCES bike (id),
+    FOREIGN KEY (part_id) REFERENCES part (id)
+);
+

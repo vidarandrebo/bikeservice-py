@@ -15,6 +15,7 @@
                     <th>Date acquired</th>
                     <th>Owner</td>
                     <th>Km</th>
+                    <th>Change</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@
                     <td>{{ post['acquired'] }}</td>
                     <td>{{ post['username'] }}</td>
                     <td>{{ post['km'] }}</td>
+                    <td><a class"action" href="{{ url_for('blog.update_km', id=post['id']) }}">Edit</a><td>
                 </tr>
         {% endfor %}
             </tbody>
