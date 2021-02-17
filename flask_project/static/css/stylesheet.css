@@ -1,0 +1,91 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+main {
+    width: 100%;
+}
+
+footer {
+    margin-bottom: auto;
+    min-height: 120px;
+    background-color: grey;
+    text-align: center;
+}
+
+footer p {
+    margin-top: 50px;
+}
+
+header {
+    margin: 0px;
+}
+
+nav {
+    display: flex;
+    background-color: turquoise;
+
+}
+
+.biketable {
+    width: 100%;
+    margin: 0px;
+}
+
+.biketable table {
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+}
+
+.biketable table tbody tr:nth-child(odd) {
+    background-color: #EEE;
+}
+
+.space {
+    flex: 1;
+}
+
+
+
+
+nav h1 a {
+    text-decoration: none;
+}
+
+
+#loginform, #registerform{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+#loginform input, #registerform input{
+    flex:1;
+}
+
+.menugroup {
+    flex: 1;
+    display: flex;
+    justify-content: right;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+
+.menuitem {
+    flex: 1;
+    max-width: 100px;
+}
+
+nav h1 {
+    flex: 1;
+}

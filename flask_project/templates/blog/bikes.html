@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="biketable">
+        <h1>{% block title %}Bikes{% endblock %}</h1>
+        {% if g.user %}
+            <a class="action" href="{{ url_for('blog.create_bike') }}">New Bike</a>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Manufaturer</th>
+                    <th>Model</th>
+                    <th>Date acquired</th>
+                    <th>Owner</td>
+                    <th>Km</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post['manufacturer'] }}</td>
+                    <td>{{ post['model'] }}</td>
+                    <td>{{ post['acquired'] }}</td>
+                    <td>{{ post['username'] }}</td>
+                    <td>{{ post['km'] }}</td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

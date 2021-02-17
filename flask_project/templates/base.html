@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<head>
+    <title>{% block title %}{% endblock %} - Flask Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+</head>
+
+<body>
+<header>
+    <nav>
+        <h1><a href="{{ url_for('index') }}">BikeService</a></h1>
+        {% if g.user %}
+            <div class="menugroup">
+                <div class="menuitem">{{ g.user['username'] }}</div>
+                <div class="menuitem"><a href="{{ url_for('auth.logout') }}">Log Out</a></div>
+                <div class="menuitem"><a href="{{ url_for('blog.bikes') }}">Bikes</a></div>
+                <div class="menuitem"><a href="{{ url_for('blog.parts') }}">Parts</a></div>
+            </div>
+        {% else %}
+            <div class="menugroup">
+                <div class="menuitem"><a href="{{ url_for('auth.register') }}">Register</a></div>
+                <div class="menuitem"><a href="{{ url_for('auth.login') }}">Log In</a></div>
+            </div>
+        {% endif %}
+    </nav>
+    {% block header %}{% endblock %}
+</header>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <div class="space">
+    </div>
+    <footer>
+        <p>This is my cool footer</p>
+    </footer>
+    {% endblock %}
+</body>
