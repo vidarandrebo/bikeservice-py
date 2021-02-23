@@ -61,7 +61,7 @@ nav h1 a {
 }
 
 
-#loginform, #registerform{
+#loginform, #registerform, #create_bike_form, #create_part_form{
     margin-left: auto;
     margin-right: auto;
     width: 200px;
@@ -69,7 +69,7 @@ nav h1 a {
     flex-direction: column;
 }
 
-#loginform input, #registerform input{
+#loginform input, #registerform input, #create_bike_form input, #create_part_form input{
     flex:1;
 }
 

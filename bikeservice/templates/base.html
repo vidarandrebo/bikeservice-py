@@ -3,6 +3,7 @@
     <title>{% block title %}{% endblock %} - Flask Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -12,9 +13,9 @@
         {% if g.user %}
             <div class="menugroup">
                 <div class="menuitem">{{ g.user['username'] }}</div>
-                <div class="menuitem"><a href="{{ url_for('auth.logout') }}">Log Out</a></div>
-                <div class="menuitem"><a href="{{ url_for('bikeservice.bikes') }}">Bikes</a></div>
-                <div class="menuitem"><a href="{{ url_for('bikeservice.parts') }}">Parts</a></div>
+                <div class="menuitem"><a href="{{ url_for('bikeservice.bikes') }}"><i class="fa fa-bicycle fa-2x"></i></a></div>
+                <div class="menuitem"><a href="{{ url_for('bikeservice.parts') }}"><i class="fa fa-cog fa-2x"></i></a></div>
+                <div class="menuitem"><a href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out fa-2x"></i></a></div>
             </div>
         {% else %}
             <div class="menugroup">
