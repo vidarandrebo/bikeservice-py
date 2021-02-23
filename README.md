@@ -9,4 +9,4 @@
 ## Run
 `source venv/bin/activate`
 
-`flask run`
+`./run_production.sh`
