@@ -3,10 +3,10 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from flask_project.auth import login_required
-from flask_project.db import get_db
+from bikeservice.auth import login_required
+from bikeservice.db import get_db
 
-bp = Blueprint('blog',__name__)
+bp = Blueprint('bikeservice',__name__)
 
 @bp.route('/')
 def index():
@@ -16,7 +16,7 @@ def index():
             ' FROM post p JOIN user u ON p.author_id = u.id'
             ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('blog/index.html', posts=posts)
+    return render_template('bikeservice/index.html', posts=posts)
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
@@ -37,8 +37,8 @@ def create():
                     (title, body, g.user['id'])
             )
             db.commit()
-            return redirect(url_for('blog.index'))
-    return render_template('blog/create.html')
+            return redirect(url_for('bikeservice.index'))
+    return render_template('bikeservice/create.html')
 
 def get_post(id, check_author=True):
     post = get_db().execute(
@@ -79,8 +79,8 @@ def update(id):
                     (title, body, id)
             )
             db.commit()
-            return redirect(url_for('blog.index'))
-    return render_template('blog/update.html', post=post)
+            return redirect(url_for('bikeservice.index'))
+    return render_template('bikeservice/update.html', post=post)
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
@@ -89,7 +89,7 @@ def delete(id):
     db = get_db()
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
-    return redirect(url_for('blog.index'))
+    return redirect(url_for('bikeservice.index'))
 
 @bp.route('/bikes', methods=('GET', 'POST'))
 @login_required
@@ -101,7 +101,7 @@ def bikes():
             ' WHERE b.owner_id = ?'
             ' ORDER BY acquired DESC',str(g.user['id'])
     ).fetchall()
-    return render_template('blog/bikes.html', posts=posts)
+    return render_template('bikeservice/bikes.html', posts=posts)
 
 @bp.route('/parts', methods=('GET', 'POST'))
 @login_required
@@ -113,7 +113,7 @@ def parts():
             ' WHERE p.owner_id = ?'
             ' ORDER BY acquired DESC',str(g.user['id'])
     ).fetchall()
-    return render_template('blog/parts.html', posts=posts)
+    return render_template('bikeservice/parts.html', posts=posts)
 
 @bp.route('/create_bike', methods=('GET', 'POST'))
 @login_required
@@ -136,8 +136,8 @@ def create_bike():
                     (manufacturer, model, g.user['id'], acquired, km)
             )
             db.commit()
-            return redirect(url_for('blog.bikes'))
-    return render_template('blog/create_bike.html')
+            return redirect(url_for('bikeservice.bikes'))
+    return render_template('bikeservice/create_bike.html')
 
 @bp.route('/create_part', methods=('GET', 'POST'))
 @login_required
@@ -161,8 +161,8 @@ def create_part():
                     (manufacturer, model, g.user['id'], acquired, km, part_type)
             )
             db.commit()
-            return redirect(url_for('blog.parts'))
-    return render_template('blog/create_part.html')
+            return redirect(url_for('bikeservice.parts'))
+    return render_template('bikeservice/create_part.html')
 
 @bp.route('/<int:id>/update_km', methods=('GET', 'POST'))
 @login_required
@@ -186,8 +186,8 @@ def update_km(id):
                     (km, id)
             )
             db.commit()
-            return redirect(url_for('blog.bikes'))
-    return render_template('blog/update_km.html', post=bike)
+            return redirect(url_for('bikeservice.bikes'))
+    return render_template('bikeservice/update_km.html', post=bike)
 
 def get_bike(id, check_owner=True):
     bike = get_db().execute(

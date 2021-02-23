@@ -13,8 +13,8 @@
             <div class="menugroup">
                 <div class="menuitem">{{ g.user['username'] }}</div>
                 <div class="menuitem"><a href="{{ url_for('auth.logout') }}">Log Out</a></div>
-                <div class="menuitem"><a href="{{ url_for('blog.bikes') }}">Bikes</a></div>
-                <div class="menuitem"><a href="{{ url_for('blog.parts') }}">Parts</a></div>
+                <div class="menuitem"><a href="{{ url_for('bikeservice.bikes') }}">Bikes</a></div>
+                <div class="menuitem"><a href="{{ url_for('bikeservice.parts') }}">Parts</a></div>
             </div>
         {% else %}
             <div class="menugroup">

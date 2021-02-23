@@ -3,19 +3,19 @@
 {% block content %}
 <main>
     <div class="biketable">
-        <h1>{% block title %}Bikes{% endblock %}</h1>
+        <h1>{% block title %}Parts{% endblock %}</h1>
         {% if g.user %}
-            <a class="action" href="{{ url_for('blog.create_bike') }}">New Bike</a>
+            <a class="action" href="{{ url_for('bikeservice.create_part') }}">New Part</a>
         {% endif %}
         <table>
             <thead>
                 <tr>
                     <th>Manufaturer</th>
                     <th>Model</th>
+                    <th>Part type</th>
                     <th>Date acquired</th>
                     <th>Owner</td>
                     <th>Km</th>
-                    <th>Change</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,10 +23,10 @@
                 <tr>
                     <td>{{ post['manufacturer'] }}</td>
                     <td>{{ post['model'] }}</td>
+                    <td>{{ post['part_type'] }}</td>
                     <td>{{ post['acquired'] }}</td>
                     <td>{{ post['username'] }}</td>
                     <td>{{ post['km'] }}</td>
-                    <td><a class"action" href="{{ url_for('blog.update_km', id=post['id']) }}">Edit</a><td>
                 </tr>
         {% endfor %}
             </tbody>
