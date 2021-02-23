@@ -19,8 +19,8 @@
             </div>
         {% else %}
             <div class="menugroup">
-                <div class="menuitem"><a href="{{ url_for('auth.register') }}">Register</a></div>
-                <div class="menuitem"><a href="{{ url_for('auth.login') }}">Log In</a></div>
+                <div class="menuitem"><a href="{{ url_for('auth.register') }}"><i class="fa fa-user-plus fa-2x"></i></a></div>
+                <div class="menuitem"><a href="{{ url_for('auth.login') }}"><i class="fa fa-sign-in fa-2x"></i></a></div>
             </div>
         {% endif %}
     </nav>
@@ -34,7 +34,7 @@
     <div class="space">
     </div>
     <footer>
-        <p>This is my cool footer</p>
+        <p>Bikeservice</p>
     </footer>
     {% endblock %}
 </body>
