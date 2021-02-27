@@ -3,11 +3,20 @@ import functools
 from flask import (
         Blueprint, flash, g, redirect, render_template, request, session, url_for
         )
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import safe_str_cmp
+import scrypt
 
 from bikeservice.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+def checkpw(storedpw, inputpw):
+    hashedpw = scrypt.hash(inputpw, "", N=2 ** 16, r=8, p=1, buflen=64)
+    return safe_str_cmp(storedpw, hashedpw)
+
+def genpw(inputpw):
+    hashedpw = scrypt.hash(inputpw, "", N=2 ** 16, r=8, p=1, buflen=64)
+    return hashedpw
 
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -30,7 +39,7 @@ def register():
         if error is None:
             db.execute(
                     'INSERT INTO user (username, password) VALUES (?, ?)',
-                    (username, generate_password_hash(password))
+                    (username, genpw(password))
             )
             db.commit()
             return redirect(url_for('auth.login'))
@@ -51,7 +60,7 @@ def login():
 
         if user is None:
             error = 'Incorrect username'
-        elif not check_password_hash(user['password'], password):
+        elif not checkpw(user['password'], password):
             error = 'Incorrect password'
 
         if error is None:
