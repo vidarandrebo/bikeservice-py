@@ -7,30 +7,32 @@
         {% if g.user %}
             <a class="action" href="{{ url_for('bikeservice.create_part') }}">New Part</a>
         {% endif %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Manufaturer</th>
-                    <th>Model</th>
-                    <th>Part type</th>
-                    <th>Date acquired</th>
-                    <th>Owner</td>
-                    <th>Km</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for post in posts %}
-                <tr>
-                    <td>{{ post['manufacturer'] }}</td>
-                    <td>{{ post['model'] }}</td>
-                    <td>{{ post['part_type'] }}</td>
-                    <td>{{ post['acquired'] }}</td>
-                    <td>{{ post['username'] }}</td>
-                    <td>{{ post['km'] }}</td>
-                </tr>
-        {% endfor %}
-            </tbody>
-        </table>
+        {% if posts %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Manufaturer</th>
+                        <th>Model</th>
+                        <th>Part type</th>
+                        <th>Date acquired</th>
+                        <th>Owner</td>
+                        <th>Km</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <td>{{ post['manufacturer'] }}</td>
+                        <td>{{ post['model'] }}</td>
+                        <td>{{ post['part_type'] }}</td>
+                        <td>{{ post['acquired'] }}</td>
+                        <td>{{ post['username'] }}</td>
+                        <td>{{ post['km'] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     </div>
 </main>
 {% endblock %}
