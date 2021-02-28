@@ -51,11 +51,14 @@ nav {
 
 .biketable {
     width: 100%;
-    margin: 0px;
+    margin-bottom: 10px;;
+    padding-bottom: 10px;;
+    overflow: auto;
 }
 
 .biketable table {
     width: 100%;
+    max-width: 100%;
     margin: 0px;
     margin-top: 10px;
     text-align: left;
@@ -67,6 +70,7 @@ nav {
 
 .space {
     flex: 1;
+    margin-top: 10px;
 }
 
 .action {
