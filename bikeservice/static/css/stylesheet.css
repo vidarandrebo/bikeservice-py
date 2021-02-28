@@ -33,8 +33,9 @@ footer {
     text-align: center;
 }
 
-footer p {
+footer p, footer a{
     margin-top: 50px;
+    color: var(--backgroundcolor);
 }
 
 header {
