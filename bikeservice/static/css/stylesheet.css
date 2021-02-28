@@ -1,5 +1,17 @@
+/*Color palette*/
+/*https://www.colourlovers.com/palette/623761/Walking_Away*/
+:root {
+    --backgroundcolor: #f5f2f2;
+    --textcolor: #313b3b;
+    --bannercolor: #889e6d;
+    --darkbrown: #807269;
+    --lightgrey: #949d95;
+}
+
+
 html {
     height: 100%;
+    background-color: var(--backgroundcolor);
 }
 
 body {
@@ -7,6 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    color: var(--textcolor);
 }
 
 main {
@@ -16,7 +29,7 @@ main {
 footer {
     margin-bottom: auto;
     min-height: 120px;
-    background-color: grey;
+    background-color: var(--lightgrey);
     text-align: center;
 }
 
@@ -30,7 +43,8 @@ header {
 
 nav {
     display: flex;
-    background-color: turquoise;
+    background-color: var(--bannercolor);
+    padding-left: 10px;
 
 }
 
@@ -42,22 +56,40 @@ nav {
 .biketable table {
     width: 100%;
     margin: 0px;
+    margin-top: 10px;
     text-align: left;
 }
 
 .biketable table tbody tr:nth-child(odd) {
-    background-color: #EEE;
+    background-color: var(--lightgrey);
 }
 
 .space {
     flex: 1;
 }
 
-
-
-
-nav h1 a {
+.action {
+    background-color: var(--darkbrown);
+    color: var(--backgroundcolor);
     text-decoration: none;
+    padding: 10px;
+    border-radius: 2px;
+    margin: 10px;
+}
+.submitbutton {
+    background-color: var(--darkbrown);
+    color: var(--backgroundcolor);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--backgroundcolor);
 }
 
 
