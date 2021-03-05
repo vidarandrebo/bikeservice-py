@@ -7,27 +7,27 @@
         {% if g.user %}
             <a class="action" href="{{ url_for('bikeservice.create_part') }}">New Part</a>
         {% endif %}
-        {% if posts %}
+        {% if part_list %}
             <table>
                 <thead>
                     <tr>
-                        <th>Manufaturer</th>
-                        <th>Model</th>
+                        <th>Name</th>
                         <th>Part type</th>
                         <th>Date acquired</th>
-                        <th>Owner</td>
+                        <th>Bike</td>
                         <th>Km</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for post in posts %}
+                {% for part in part_list %}
                     <tr>
-                        <td>{{ post['manufacturer'] }}</td>
-                        <td>{{ post['model'] }}</td>
-                        <td>{{ post['part_type'] }}</td>
-                        <td>{{ post['acquired'] }}</td>
-                        <td>{{ post['username'] }}</td>
-                        <td>{{ post['km'] }}</td>
+                        <td>{{ part['manufacturer'] }} {{ part['model'] }}</td>
+                        <td>{{ part['part_type'] }}</td>
+                        <td>{{ part['acquired'] }}</td>
+                        <td>{{ part['bike_id'] }}</td>
+                        <td>{{ part['km'] }}</td>
+                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_part', id=part['id']) }}"><i class="fa fa-edit"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

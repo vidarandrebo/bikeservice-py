@@ -64,6 +64,12 @@ nav {
     text-align: left;
 }
 
+#editbutton {
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
 .biketable table tbody tr:nth-child(odd) {
     background-color: var(--lightgrey);
 }

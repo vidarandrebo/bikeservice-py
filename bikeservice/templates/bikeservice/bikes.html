@@ -7,7 +7,7 @@
         {% if g.user %}
             <a class="action" href="{{ url_for('bikeservice.create_bike') }}">New Bike</a>
         {% endif %}
-        {% if posts %}
+        {% if bike_list %}
             <table>
                 <thead>
                     <tr>
@@ -20,14 +20,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for post in posts %}
+                {% for bike in bike_list %}
                     <tr>
-                        <td>{{ post['manufacturer'] }}</td>
-                        <td>{{ post['model'] }}</td>
-                        <td>{{ post['acquired'] }}</td>
-                        <td>{{ post['username'] }}</td>
-                        <td>{{ post['km'] }}</td>
-                        <td><a class"action" href="{{ url_for('bikeservice.update_km', id=post['id']) }}">Edit</a></td>
+                        <td>{{ bike['manufacturer'] }}</td>
+                        <td>{{ bike['model'] }}</td>
+                        <td>{{ bike['acquired'] }}</td>
+                        <td>{{ bike['username'] }}</td>
+                        <td>{{ bike['km'] }}</td>
+                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_km', id=bike['id']) }}"><i class="fa fa-edit"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
