@@ -26,6 +26,8 @@ When finished, `BikeService` will let you track which parts are currently active
 ## Installation
 `.\install.ps1`
 
+Installation of scrypt may fail. Instructions can be found at this link [https://pypi.org/project/scrypt/](https://pypi.org/project/scrypt/)
+
 ## Remove venv and database
 `.\uninstall.ps1`
 
