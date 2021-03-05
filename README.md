@@ -21,7 +21,7 @@ When finished, `BikeService` will let you track which parts are currently active
 ### For development enviroment
 `./run_flask.sh`
 
-# Windows
+# Windows Powershell
 
 ## Installation
 `.\install.ps1`
