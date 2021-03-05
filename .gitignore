@@ -7,6 +7,8 @@ venv/
 
 instance/
 
+.vs/
+
 .pytest_cache/
 .coverage
 htmlcov/
