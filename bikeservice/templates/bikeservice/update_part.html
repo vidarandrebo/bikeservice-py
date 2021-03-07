@@ -5,6 +5,16 @@
     <form method="post">
         <label for="km">Km</label>
         <input name="km" id="km" value="{{request.form['km'] or part['km'] }}" required>
+        <label for="bike">Bike</label>
+        <select id="bike" name="bike">
+            {% for bike in bikes %}
+                {% if bike.id == part['bike_id'] %}
+                    <option value="{{ bike.id }}" selected>{{ bike.manufacturer }} {{ bike.model }}</option>
+                {% else %}
+                    <option value="{{ bike.id }}">{{ bike.manufacturer }} {{ bike.model }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
         <input type="submit" value="Save">
     </form>
 

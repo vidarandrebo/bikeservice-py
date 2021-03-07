@@ -25,7 +25,7 @@
                         <td>{{ part['manufacturer'] }} {{ part['model'] }}</td>
                         <td>{{ part['part_type'] }}</td>
                         <td>{{ part['acquired'] }}</td>
-                        <td>{{ part['bike_id'] }}</td>
+                        <td>{{ part['bikemanufacturer'] }} {{ part['bikemodel'] }}</td>
                         <td>{{ part['km'] }}</td>
                         <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_part', id=part['id']) }}"><i class="fa fa-edit"></i></a></td>
                     </tr>

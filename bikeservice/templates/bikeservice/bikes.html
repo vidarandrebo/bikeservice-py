@@ -27,7 +27,7 @@
                         <td>{{ bike['acquired'] }}</td>
                         <td>{{ bike['username'] }}</td>
                         <td>{{ bike['km'] }}</td>
-                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_km', id=bike['id']) }}"><i class="fa fa-edit"></i></a></td>
+                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_bike', id=bike['id']) }}"><i class="fa fa-edit"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

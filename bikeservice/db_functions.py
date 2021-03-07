@@ -21,7 +21,7 @@ def get_bike(id, check_owner=True):
 #returns a single part
 def get_part(id, check_owner=True):
     part = get_db().execute(
-        'SELECT km, p.owner_id, u.id'
+        'SELECT km, p.owner_id, u.id, p.bike_id'
         ' FROM part p JOIN user u ON p.owner_id = u.id'
         ' WHERE p.id = ?',
         (id,)
@@ -67,9 +67,11 @@ def get_bikes():
 def get_parts():
     db = get_db()
     parts = db.execute(
-            'SELECT p.id, manufacturer, model, acquired, bike_id, owner_id, username, km, part_type'
-            ' FROM part p JOIN user u ON p.owner_id = u.id'
+            'SELECT p.id, p.manufacturer, p.model, p.acquired, p.bike_id, b.manufacturer AS bikemanufacturer, b.model AS bikemodel, p.owner_id, u.username, p.km, part_type'
+            ' FROM ((part p JOIN user u ON p.owner_id = u.id)'
+            ' LEFT JOIN bike b ON p.bike_id = b.id)'
             ' WHERE p.owner_id = ?'
-            ' ORDER BY acquired DESC',str(g.user['id'])
+            ' ORDER BY p.acquired DESC',str(g.user['id'])
     ).fetchall()
     return parts
+

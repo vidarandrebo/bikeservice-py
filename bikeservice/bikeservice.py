@@ -141,6 +141,7 @@ def create_part():
 def update_part(id):
     if request.method == 'POST':
         km = request.form['km']
+        bike = request.form['bike']
         error = None
         if not km:
             error = 'Km is required'
@@ -149,17 +150,17 @@ def update_part(id):
         else:
             db = get_db()
             db.execute(
-                    'UPDATE part SET km = ?'
+                    'UPDATE part SET km = ?, bike_id = ?'
                     ' WHERE id = ?',
-                    (km, id)
+                    (km, bike, id)
             )
             db.commit()
             return redirect(url_for('bikeservice.parts'))
-    return render_template('bikeservice/update_part.html', part=get_part(id))
+    return render_template('bikeservice/update_part.html', part=get_part(id), bikes=get_bikes())
 
-@bp.route('/<int:id>/update_km', methods=('GET', 'POST'))
+@bp.route('/<int:id>/update_bike', methods=('GET', 'POST'))
 @login_required
-def update_km(id):
+def update_bike(id):
     if request.method == 'POST':
         km = request.form['km']
         error = None

@@ -43,13 +43,3 @@ CREATE TABLE part(
 );
 
 
-
-CREATE TABLE bike_part(
-    bike_id INTEGER NOT NULL,
-    part_id INTEGER NOT NULL,
-    km REAL,
-    since DATE,
-    FOREIGN KEY (bike_id) REFERENCES bike (id),
-    FOREIGN KEY (part_id) REFERENCES part (id)
-);
-
