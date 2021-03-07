@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 
 from bikeservice.auth import login_required
 from bikeservice.db import get_db
-from bikeservice.db_functions import get_bike, get_part, get_bikes, get_parts
+from bikeservice.db_functions import get_bike, get_part, get_bikes, get_parts, get_nparts, get_nbikes, get_total_km
 
 bp = Blueprint('bikeservice',__name__)
 
@@ -13,11 +13,16 @@ bp = Blueprint('bikeservice',__name__)
 def index():
     db = get_db()
     posts = db.execute(
-            'SELECT p.id, title, body, created, author_id, username'
+            'SELECT p.id, title, body, p.created, author_id, username'
             ' FROM post p JOIN user u ON p.author_id = u.id'
-            ' ORDER BY created DESC'
+            ' ORDER BY p.created DESC'
     ).fetchall()
     return render_template('bikeservice/index.html', posts=posts)
+
+@bp.route('/user')
+@login_required
+def user():
+    return render_template('bikeservice/user.html', n_parts=get_nparts(), n_bikes=get_nbikes(), distance=get_total_km())
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required

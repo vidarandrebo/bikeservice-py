@@ -75,3 +75,31 @@ def get_parts():
     ).fetchall()
     return parts
 
+
+def get_nparts():
+    db = get_db()
+    nparts = db.execute(
+            'SELECT COUNT(*) AS count'
+            ' FROM part'
+            ' WHERE owner_id = ?',str(g.user['id'])
+            ).fetchone()
+    return  nparts
+
+def get_nbikes():
+    db = get_db()
+    nbikes = db.execute(
+            'SELECT COUNT(*) AS count'
+            ' FROM bike'
+            ' WHERE owner_id = ?',str(g.user['id'])
+            ).fetchone()
+    return  nbikes
+
+def get_total_km():
+    db = get_db()
+    km = db.execute(
+            'SELECT SUM(km) AS total_km'
+            ' FROM bike'
+            ' WHERE owner_id = ?',str(g.user['id'])
+            ).fetchone()
+    return km
+

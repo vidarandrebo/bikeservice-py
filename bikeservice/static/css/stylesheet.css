@@ -44,6 +44,7 @@ header {
 
 nav {
     display: flex;
+    justify-content: space-between;
     background-color: var(--bannercolor);
     padding-left: 10px;
 
@@ -77,6 +78,11 @@ nav {
 .space {
     flex: 1;
     margin-top: 10px;
+}
+
+.headerspace {
+    flex: 1;
+    flex-grow: 1;
 }
 
 .action {
@@ -119,16 +125,39 @@ nav a {
 .menugroup {
     flex: 1;
     display: flex;
-    justify-content: right;
     margin-top:auto;
     margin-bottom:auto;
+    justify-content: space-evenly;
 }
 
 .menuitem {
     flex: 1;
-    max-width: 100px;
+    max-width: 40px;
+    min-width: 40px;
+    text-align: center;
 }
+
 
 nav h1 {
     flex: 1;
+}
+
+#accountpage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#accountdiv {
+    height: 200px;
+    border: solid;
+    text-align: center;
+}
+
+#accountdiv a {
+    display: block;
+}
+
+#accountdiv h4 {
+    margin-top: 1px;
 }
