@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 
 from bikeservice.auth import login_required
 from bikeservice.db import get_db
-from bikeservice.db_functions import get_bike, get_part, get_bikes, get_parts, get_nparts, get_nbikes, get_total_km
+from bikeservice.db_functions import get_bike, get_part, get_bikes, get_parts, get_nparts, get_nbikes, get_total_km, get_post
 
 bp = Blueprint('bikeservice',__name__)
 

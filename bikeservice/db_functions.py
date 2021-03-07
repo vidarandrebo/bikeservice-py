@@ -1,5 +1,6 @@
 from bikeservice.db import get_db
 from flask import g
+from werkzeug.exceptions import abort
 
 #return a single bike
 def get_bike(id, check_owner=True):
