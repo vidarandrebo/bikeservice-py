@@ -6,6 +6,7 @@
     --bannercolor: #889e6d;
     --darkbrown: #807269;
     --lightgrey: #949d95;
+    --tableaccent: #ddd;
 }
 
 
@@ -63,6 +64,7 @@ nav {
     margin: 0px;
     margin-top: 10px;
     text-align: left;
+    border-collapse: collapse;
 }
 
 #editbutton {
@@ -71,8 +73,12 @@ nav {
     margin-right: auto;
 }
 
+#editbutton a {
+    color: var(--textcolor);
+}
+
 .biketable table tbody tr:nth-child(odd) {
-    background-color: var(--lightgrey);
+    background-color: var(--tableaccent);
 }
 
 .space {

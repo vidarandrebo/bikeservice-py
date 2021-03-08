@@ -14,6 +14,11 @@
                     <option value="{{ bike.id }}">{{ bike.manufacturer }} {{ bike.model }}</option>
                 {% endif %}
             {% endfor %}
+            {% if part['bike_id'] is none %}
+                <option value="" selected>No Bike</option>
+            {% else %}
+                <option value="">No Bike</option>
+            {% endif %}
         </select>
         <input type="submit" value="Save">
     </form>

@@ -147,6 +147,8 @@ def update_part(id):
     if request.method == 'POST':
         km = request.form['km']
         bike = request.form['bike']
+        if bike == "":
+            bike = None
         error = None
         if not km:
             error = 'Km is required'
