@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 #return a single bike
 def get_bike(id, check_owner=True):
     bike = get_db().execute(
-        'SELECT km, b.owner_id, u.id'
+        'SELECT km, b.owner_id, u.id, b.manufacturer, b.model'
         ' FROM bike b JOIN user u ON b.owner_id = u.id'
         ' WHERE b.id = ?',
         (id,)
@@ -22,7 +22,7 @@ def get_bike(id, check_owner=True):
 #returns a single part
 def get_part(id, check_owner=True):
     part = get_db().execute(
-        'SELECT km, p.owner_id, u.id, p.bike_id'
+        'SELECT km, p.owner_id, u.id, p.bike_id, p.manufacturer, p.model'
         ' FROM part p JOIN user u ON p.owner_id = u.id'
         ' WHERE p.id = ?',
         (id,)
@@ -39,7 +39,7 @@ def get_part(id, check_owner=True):
 
 def get_post(id, check_author=True):
     post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, username'
+        'SELECT p.id, title, body, p.created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' WHERE p.id = ?',
         (id,)

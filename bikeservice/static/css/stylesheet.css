@@ -116,15 +116,19 @@ nav a {
 }
 
 
-#loginform, #registerform, #create_bike_form, #create_part_form{
+.standard_form {
     margin-left: auto;
     margin-right: auto;
-    width: 200px;
+    padding-right: 25px;
+    padding-left: 25px;
+    width: 300px;
     display: flex;
     flex-direction: column;
 }
 
-#loginform input, #registerform input, #create_bike_form input, #create_part_form input{
+.standard_form input {
+    box-sizing: border-box;
+    width: 100%;
     flex:1;
 }
 
@@ -159,6 +163,7 @@ nav h1 {
     height: 200px;
     border: solid;
     text-align: center;
+    width: 250px;
 }
 
 #accountdiv a {
