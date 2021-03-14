@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <h1>{% block title %}{{ g.user['username'] }}{% endblock %}</h1>
+    <div id="accountpage">
+        <div id="accountdiv">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Account Stats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Parts</td>
+                        <td>{{ n_parts['count'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bikes</td>
+                        <td>{{ n_bikes['count'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Distance</td>
+                        <td>{{ distance['total_km'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date Created</td>
+                        <td>{{ g.user['created'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="accountdiv">
+            <h4>Account Actions</h4>
+            <a href="">Change Username</a>
+            <a href="">Change Password</a>
+            <a href="">Change Profile Picture</a>
+            <a href="">Delete Account</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

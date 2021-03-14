@@ -25,9 +25,13 @@
                         <td>{{ part['manufacturer'] }} {{ part['model'] }}</td>
                         <td>{{ part['part_type'] }}</td>
                         <td>{{ part['acquired'] }}</td>
-                        <td>{{ part['bikemanufacturer'] }} {{ part['bikemodel'] }}</td>
+                        {% if part['bikemanufacturer'] != None %}
+                            <td>{{ part['bikemanufacturer'] }} {{ part['bikemodel'] }}</td>
+                        {% else %}
+                            <td>No bike assigned</td>
+                        {% endif %}
                         <td>{{ part['km'] }}</td>
-                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_part', id=part['id']) }}"><i class="fa fa-edit"></i></a></td>
+                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_part', id=part['id']) }}"><i class="fa fa-edit fa-2x"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

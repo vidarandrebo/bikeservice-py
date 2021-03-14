@@ -6,6 +6,7 @@
     --bannercolor: #889e6d;
     --darkbrown: #807269;
     --lightgrey: #949d95;
+    --tableaccent: #ddd;
 }
 
 
@@ -44,6 +45,7 @@ header {
 
 nav {
     display: flex;
+    justify-content: space-between;
     background-color: var(--bannercolor);
     padding-left: 10px;
 
@@ -62,6 +64,7 @@ nav {
     margin: 0px;
     margin-top: 10px;
     text-align: left;
+    border-collapse: collapse;
 }
 
 #editbutton {
@@ -70,13 +73,22 @@ nav {
     margin-right: auto;
 }
 
+#editbutton a {
+    color: var(--textcolor);
+}
+
 .biketable table tbody tr:nth-child(odd) {
-    background-color: var(--lightgrey);
+    background-color: var(--tableaccent);
 }
 
 .space {
     flex: 1;
     margin-top: 10px;
+}
+
+.headerspace {
+    flex: 1;
+    flex-grow: 1;
 }
 
 .action {
@@ -104,31 +116,60 @@ nav a {
 }
 
 
-#loginform, #registerform, #create_bike_form, #create_part_form{
+.standard_form {
     margin-left: auto;
     margin-right: auto;
-    width: 200px;
+    padding-right: 25px;
+    padding-left: 25px;
+    width: 300px;
     display: flex;
     flex-direction: column;
 }
 
-#loginform input, #registerform input, #create_bike_form input, #create_part_form input{
+.standard_form input {
+    box-sizing: border-box;
+    width: 100%;
     flex:1;
 }
 
 .menugroup {
     flex: 1;
     display: flex;
-    justify-content: right;
     margin-top:auto;
     margin-bottom:auto;
+    justify-content: space-evenly;
 }
 
 .menuitem {
     flex: 1;
-    max-width: 100px;
+    max-width: 40px;
+    min-width: 40px;
+    text-align: center;
 }
+
 
 nav h1 {
     flex: 1;
+    flex-shrink: 1;
+}
+
+#accountpage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#accountdiv {
+    height: 200px;
+    border: solid;
+    text-align: center;
+    width: 250px;
+}
+
+#accountdiv a {
+    display: block;
+}
+
+#accountdiv h4 {
+    margin-top: 1px;
 }

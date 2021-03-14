@@ -11,12 +11,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Manufaturer</th>
+                        <th>Manufacturer</th>
                         <th>Model</th>
                         <th>Date acquired</th>
                         <th>Owner</td>
                         <th>Km</th>
-                        <th>Change</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,7 @@
                         <td>{{ bike['acquired'] }}</td>
                         <td>{{ bike['username'] }}</td>
                         <td>{{ bike['km'] }}</td>
-                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_bike', id=bike['id']) }}"><i class="fa fa-edit"></i></a></td>
+                        <td id="editbutton"><a class"action" href="{{ url_for('bikeservice.update_bike', id=bike['id']) }}"><i class="fa fa-edit fa-2x"></i></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

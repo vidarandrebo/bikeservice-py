@@ -11,11 +11,12 @@
 <header>
     <nav>
         <h1><a href="{{ url_for('index') }}">BikeService</a></h1>
+        <div class="headerspace"></div>
         {% if g.user %}
             <div class="menugroup">
-                <div class="menuitem">{{ g.user['username'] }}</div>
                 <div class="menuitem"><a href="{{ url_for('bikeservice.bikes') }}"><i class="fa fa-bicycle fa-2x"></i></a></div>
                 <div class="menuitem"><a href="{{ url_for('bikeservice.parts') }}"><i class="fa fa-cog fa-2x"></i></a></div>
+                <div class="menuitem"><a href="{{ url_for('bikeservice.user') }}"><i class="fa fa-user fa-2x"></i></a></div>
                 <div class="menuitem"><a href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out fa-2x"></i></a></div>
             </div>
         {% else %}

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %}Edit{% endblock %}</h1>
-    <form method="post">
+    <form method="post" class="standard_form">
+        <h3>{% block title %}Edit{% endblock %} {{ part['manufacturer'] }} {{ part['model'] }}</h3>
         <label for="km">Km</label>
         <input name="km" id="km" value="{{request.form['km'] or part['km'] }}" required>
         <label for="bike">Bike</label>
@@ -14,8 +14,13 @@
                     <option value="{{ bike.id }}">{{ bike.manufacturer }} {{ bike.model }}</option>
                 {% endif %}
             {% endfor %}
+            {% if part['bike_id'] is none %}
+                <option value="" selected>No Bike</option>
+            {% else %}
+                <option value="">No Bike</option>
+            {% endif %}
         </select>
-        <input type="submit" value="Save">
+        <input type="submit" value="Save" class="submitbutton">
     </form>
 
 {% endblock %}
